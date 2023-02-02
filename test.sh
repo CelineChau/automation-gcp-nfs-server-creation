@@ -15,7 +15,7 @@ sudo chown -R nobody:nogroup /mnt/nfs_share
 sudo chown 777 /mnt/nfs_share
 
 # Grant nfs access
-sudo bash -c "echo '/mnt/nfs_share 10.128.0.0/9(rw,sync,no_subtree_check)' >> /etc/exports"
+sudo bash -c "echo '/mnt/nfs_share 0.0.0.0/0(rw,sync,no_subtree_check)' >> /etc/exports"
 
 # Export NFS directory
 sudo exportfs -a
