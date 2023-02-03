@@ -12,6 +12,6 @@ build {
   sources = ["source.googlecompute.automation"]
   provisioner "shell" {
     expect_disconnect = true
-    script = "../test.sh"
+    script = "../nfs-server-creation.sh"
   }
 }

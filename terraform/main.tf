@@ -4,16 +4,16 @@ data "google_compute_image" "my_image" {
 }
 
 # Attached disk
-resource "google_compute_disk" "default" {
-  name  = "nfs-server-disk"
+resource "google_compute_disk" "default_disk" {
+  name  = "nfs-server-disk-1"
   type  = "pd-ssd"
   zone  = "europe-west1-b"
   image = "${data.google_compute_image.my_image.self_link}"
 }
 
 # Create instance with image packer created
-resource "google_compute_instance" "vm" {
-  name         = "nfs-server-vm"
+resource "google_compute_instance" "vm_1" {
+  name         = "nfs-server-vm-1"
   machine_type = "e2-medium"
   zone         = "europe-west1-b"
 
@@ -37,6 +37,6 @@ resource "google_compute_instance" "vm" {
 }
 
 resource "google_compute_attached_disk" "default" {
-  disk     = google_compute_disk.default.id
-  instance = google_compute_instance.vm.id
+  disk     = google_compute_disk.default_disk.id
+  instance = google_compute_instance.vm_1.id
 }
